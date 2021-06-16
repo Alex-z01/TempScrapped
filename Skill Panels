@@ -1,0 +1,824 @@
+    void UpgradeText(Button but)
+    {
+        //anim.SetTrigger("PanelEnter");
+        StartCoroutine(panelAnim(-1880));
+        Debug.Log(but.name);
+
+        if(but.transform.parent.name == "DPS Tree" && but.name != "DPS Tree")
+        {
+            if(but.name == "Skill0")
+            {
+                selectedSkill = "DPS1";
+                description.text = "Upgrade : +10% dmg increase to all basic enemies";
+                statChange.text = "Bonus DMG: +" + Stats.BonusDmg * 100 + "% <color=green>-> 10%</color>";
+            }
+            if (but.name == "Skill1")
+            {
+                selectedSkill = "DPS2L";
+                description.text = "Upgrade : +25% dmg increase to all basic enemies";
+                statChange.text = "Bonus DMG: +" + Stats.BonusDmg * 100 + "% <color=green>-> 25%</color>";
+            }
+            if (but.name == "Skill2")
+            {
+                selectedSkill = "DPS2R";
+                description.text = "Upgrade : +5% Critical Chance";
+                statChange.text = "Bonus Crit Chance: +" + Stats.BonusCritChance * 100 + "% <color=green>+5%</color>";
+            }
+            if (but.name == "Skill3")
+            {
+                selectedSkill = "DPS3";
+                choice2.gameObject.SetActive(true);
+                description.text = "1. +5% Enemy Missing HP DMG\n2. Shot After Crit Has +35% Crit Chance";
+            }
+            if (but.name == "Skill4")
+            {
+                selectedSkill = "DPS4L";
+                description.text = "Upgrade : +35% DMG AND +5% Boss DMG";
+                statChange.text = "Bonus DMG: +" + Stats.BonusDmg * 100 + "% <color=green>+35%</color> Bonus Boss DMG: +" 
+                    + Stats.BonusBossDmg * 100 + "% <color=green>-> 5%</color>";
+            }
+            if (but.name == "Skill5")
+            {
+                selectedSkill = "DPS4R";
+                description.text = "Upgrade : +20% Crit DMG";
+                statChange.text = "Bonus Crit DMG: +" + Stats.BonusCritDMG * 100 + "% <color=green>+20%</color>";
+            }
+            if (but.name == "Skill6")
+            {
+                selectedSkill = "DPS5";
+                choice2.gameObject.SetActive(true);
+                description.text = "1. 25% Chance To Not Consume Bullet \n2. +100% ALL DMG Under 25% HP";
+            }
+            if (but.name == "Skill7")
+            {
+                selectedSkill = "DPS6L";
+                description.text = "Upgrade : +50% DMG";
+                statChange.text = "Bonus DMG: +" + Stats.BonusDmg * 100 + "% <color=green>-> 50%</color>";
+            }
+            if (but.name == "Skill8")
+            {
+                selectedSkill = "DPS6R";
+                description.text = "Upgrade : +20% Crit Chance AND +45% Crit DMG";
+                statChange.text = "Bonus Crit Chance: +" + Stats.BonusCritChance * 100 + "% <color=green>+20%</color> " +
+                    "Bonus Crit DMG: +" + Stats.BonusCritDMG * 100 + "% <color=green>+45%</color>";
+            }
+            if (but.name == "Skill9")
+            {
+                selectedSkill = "DPS7";
+            }
+        }
+        if(but.transform.parent.name == "Utility Tree" && but.name != "Utility Tree")
+        {
+            if (but.name == "Skill0")
+            {
+                selectedSkill = "Util1";
+                description.text = "Upgrade : +5% Reload Speed";
+                statChange.text = "Bonus Reload Speed: +" + Stats.BonusRLSpeed * 100 + "% <color=green>+5%</color>";
+            }
+            if (but.name == "Skill1")
+            {
+                selectedSkill = "Util2L";
+                description.text = "Upgrade : +15% Movement Speed";
+                statChange.text = "Bonus Move Speed: +" + Stats.BonusMoveSpeed * 100 + "% <color=green>-> 15%</color>";
+            }
+            if (but.name == "Skill2")
+            {
+                selectedSkill = "Util2R";
+                description.text = "Upgrade : +20% Reload Speed";
+                statChange.text = "Bonus Crit Chance: +" + Stats.BonusCritChance * 100 + "% <color=green>+20%</color>";
+            }
+            if (but.name == "Skill3")
+            {
+                selectedSkill = "Util3";
+                choice2.gameObject.SetActive(true);
+                description.text = "1. +33% DMG On Empty Mag RL \n2. +18% Movement Speed On Empty Mag Reload";
+            }
+            if (but.name == "Skill4")
+            {
+                selectedSkill = "Util4L";
+                description.text = "Upgrade : Enemies Near You Are 20% Slower, and +10% Companion Strength";
+            }
+            if (but.name == "Skill5")
+            {
+                selectedSkill = "Util4R";
+                description.text = "Upgrade : +10% AOE Damage";
+                statChange.text = "Bonus AOE DMG: +" + Stats.BonusAoeDMG * 100 + "% <color=green>+10%</color>";
+            }
+            if (but.name == "Skill6")
+            {
+                selectedSkill = "Util5";
+                choice2.gameObject.SetActive(true);
+                description.text = "1. 10% Chance For Free Reload \n2. Become Invisible For 2.5s On Empty Mag Reload";
+            }
+            if (but.name == "Skill7")
+            {
+                selectedSkill = "Util6L";
+                description.text = "Upgrade : 35% Movement Speed";
+                statChange.text = "Bonus Move Speed: +" + Stats.BonusMoveSpeed * 100 + "% <color=green>-> 35%</color>";
+            }
+            if (but.name == "Skill8")
+            {
+                selectedSkill = "Util6R";
+                description.text = "Upgrade : +15% Ability Cooldown Reduction and +10% Kill Rewards";
+            }
+            if (but.name == "Skill9")
+            {
+                selectedSkill = "Util7";
+            }
+        }
+        if (but.transform.parent.name == "Tank Tree" && but.name != "Tank Tree")
+        {
+            if (but.name == "Skill0")
+            {
+                selectedSkill = "Tank1";
+                description.text = "Upgrade : +50 Max HP";
+                statChange.text = "Bonus Max HP: +" + Stats.BonusHp + " <color=green>-> 50</color>";
+            }
+            if (but.name == "Skill1")
+            {
+                selectedSkill = "Tank2L";
+                description.text = "Upgrade : +75 Max HP";
+                statChange.text = "Bonus Reload Speed: +" + Stats.BonusHp + " <color=green>-> 75</color>";
+            }
+            if (but.name == "Skill2")
+            {
+                selectedSkill = "Tank2R";
+                description.text = "Upgrade : Take 10% Less DMG";
+                statChange.text = "Bonus Damage Reduction: +" + Stats.DamageReduction * 100 + "% <color=green>+10%</color>";
+            }
+            if (but.name == "Skill3")
+            {
+                choice2.gameObject.SetActive(true);
+                selectedSkill = "Tank3";
+                description.text = "Upgrade : 1. Take 20% Less Boss DMG \n2. Nullify Fatal Damage Once";
+            }
+            if (but.name == "Skill4")
+            {
+                selectedSkill = "Tank4L";
+                description.text = "Upgrade : +100 Max HP, and Regen Starts 1sec Sooner";
+                statChange.text = "Bonus HP: +" + Stats.BonusHp + "% <color=green>-> 100</color>";
+            }
+            if (but.name == "Skill5")
+            {
+                selectedSkill = "Tank4R";
+                description.text = "Upgrade : 1. +6% Lifesteal \n2. +13% DMG At Max HP";
+            }
+            if (but.name == "Skill6")
+            {
+                selectedSkill = "Tank5";
+                description.text = "Upgrade : +5% Max HP On Kills";
+            }
+            if (but.name == "Skill7")
+            {
+                selectedSkill = "Tank6L";
+                description.text = "Upgrade : +125 Max HP";
+                statChange.text = "Bonus Max HP: +" + Stats.BonusHp + "% <color=green>-> 125</color>";
+            }
+            if (but.name == "Skill8")
+            {
+                selectedSkill = "Tank6R";
+                description.text = "Upgrade : +10% Chance To Ignore DMG, and Take 30% Less DMG while standing still";
+            }
+            if (but.name == "Skill9")
+            {
+
+            }
+
+        }
+    }
+
+    public void ExitUpgradePanel()
+    {
+        statChange.text = "";
+        choice2.gameObject.SetActive(false);
+        StartCoroutine(panelAnim(-2220));
+    }
+
+    IEnumerator panelAnim(float y)
+    {
+        Vector2 pos = new Vector2(0, y);
+
+        //upgradePanel.localPosition = Vector2.Lerp(upgradePanel.localPosition, pos, Time.deltaTime);
+        float elapsedTime = 0;
+        Vector3 startingPos = upgradePanel.transform.localPosition;
+        while (elapsedTime < 0.25f)
+        {
+            upgradePanel.transform.localPosition = Vector3.Lerp(startingPos, pos, (elapsedTime / 0.25f));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        //upgradePanel.transform.position = pos;
+    }
+
+    public void BuyUpgrade()
+    {
+        // DPS Tree
+        if(selectedSkill == "DPS1" && DPSTree.skills[0] != "P")
+        {
+            Stats.BonusDmg = 0.1f;
+            DPSTree.skills[0] = "P";
+            DPSTree.skillButtons[0].interactable = false;
+
+            DPSTree.skills[1] = "U";
+            DPSTree.skills[2] = "U";
+            DPSTree.skillButtons[1].interactable = true;
+            DPSTree.skillButtons[2].interactable = true;
+            Debug.Log("Bonus DMG = " + Stats.BonusDmg);
+        }
+        if(selectedSkill == "DPS2L" && DPSTree.skills[1] != "P")
+        {
+            Stats.BonusDmg = 0.25f;
+            DPSTree.skills[1] = "P";
+            DPSTree.skillButtons[1].interactable = false;
+
+            DPSTree.skills[4] = "U";
+            DPSTree.skillButtons[4].interactable = true;
+            if (DPSTree.skills[2] == "P")
+            {
+                DPSTree.skills[3] = "U";
+                DPSTree.skillButtons[3].interactable = true;
+            }
+        }
+        if (selectedSkill == "DPS2R" && DPSTree.skills[2] != "P")
+        {
+            Stats.BonusCritChance += 0.05f;
+            DPSTree.skills[2] = "P";
+            DPSTree.skillButtons[2].interactable = false;
+
+            DPSTree.skills[5] = "U";
+            DPSTree.skillButtons[5].interactable = true;
+            if (DPSTree.skills[1] == "P")
+            {
+                DPSTree.skills[3] = "U";
+                DPSTree.skillButtons[3].interactable = true;
+            }
+        }
+        if (selectedSkill == "DPS3" && DPSTree.skills[3] != "P")
+        {
+            Stats.BonusMissingEnemyHpDMG = 0.05f;
+            DPSTree.skills[3] = "P";
+            DPSTree.skillButtons[3].interactable = false;
+            if (DPSTree.skills[4] != "P")
+            {
+                DPSTree.skills[4] = "U";
+                DPSTree.skillButtons[4].interactable = true;
+            }
+                
+            if (DPSTree.skills[5] != "P")
+            {
+                DPSTree.skills[5] = "U";
+                DPSTree.skillButtons[5].interactable = true;
+            }    
+        }
+        if (selectedSkill == "DPS4L" && DPSTree.skills[4] != "P")
+        {
+            Stats.BonusDmg += 0.35f;
+            Stats.BonusBossDmg = 0.05f;
+            DPSTree.skills[4] = "P";
+            DPSTree.skillButtons[4].interactable = false;
+
+            DPSTree.skills[7] = "U";
+            DPSTree.skillButtons[7].interactable = true;
+            if (DPSTree.skills[5] == "P")
+            {
+                DPSTree.skills[6] = "U";
+                DPSTree.skillButtons[6].interactable = true;
+            }    
+        }
+        if (selectedSkill == "DPS4R" && DPSTree.skills[5] != "P")
+        {
+            Stats.BonusCritDMG += 0.2f;
+            DPSTree.skills[5] = "P";
+            DPSTree.skillButtons[5].interactable = false;
+
+            DPSTree.skills[8] = "U";
+            DPSTree.skillButtons[8].interactable = true;
+            if (DPSTree.skills[4] == "P")
+            {
+                DPSTree.skills[6] = "U";
+                DPSTree.skillButtons[6].interactable = true;
+            }
+        }
+        if (selectedSkill == "DPS5" && DPSTree.skills[6] != "P")
+        {
+            Stats.FreeBulletChance = 0.25f;
+            DPSTree.skills[6] = "P";
+            DPSTree.skillButtons[6].interactable = false;
+            if(DPSTree.skills[7] != "P")
+            {
+                DPSTree.skills[8] = "U";
+                DPSTree.skillButtons[7].interactable = true;
+            }
+            if(DPSTree.skills[8] != "P")
+            {
+                DPSTree.skills[8] = "U";
+                DPSTree.skillButtons[8].interactable = true;
+            }
+                
+            if (DPSTree.skills[7] == "P" && DPSTree.skills[8] == "P")
+            {
+                DPSTree.skills[9] = "U";
+                DPSTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "DPS6L" && DPSTree.skills[7] != "P")
+        {
+            Stats.BonusDmg = 0.5f;
+            DPSTree.skills[7] = "P";
+            DPSTree.skillButtons[7].interactable = false;
+            if (DPSTree.skills[8] == "P" && DPSTree.skills[6] == "P")
+            {
+                DPSTree.skills[9] = "U";
+                DPSTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "DPS6R" && DPSTree.skills[8] != "P")
+        {
+            Stats.BonusCritChance += 0.2f;
+            Stats.BonusCritDMG += 0.45f;
+            DPSTree.skills[8] = "P";
+            DPSTree.skillButtons[8].interactable = false;
+            if(DPSTree.skills[7] == "P" && DPSTree.skills[6] == "P")
+            {
+                DPSTree.skills[9] = "U";
+                DPSTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "DPS7" && DPSTree.skills[9] != "P")
+        {
+            DPSTree.skills[9] = "P";
+            DPSTree.skillButtons[9].interactable = false;
+        }
+        // Utility Tree
+        if (selectedSkill == "Util1" && UtilityTree.skills[0] != "P")
+        {
+            Stats.BonusRLSpeed = 0.05f;
+            UtilityTree.skills[0] = "P";
+            UtilityTree.skillButtons[0].interactable = false;
+
+            UtilityTree.skills[1] = "U";
+            UtilityTree.skills[2] = "U";
+            UtilityTree.skillButtons[1].interactable = true;
+            UtilityTree.skillButtons[2].interactable = true;
+            Debug.Log("Bonus Reload Speed = " + Stats.BonusRLSpeed);
+        }
+        if (selectedSkill == "Util2L" && UtilityTree.skills[1] != "P")
+        {
+            Stats.BonusMoveSpeed = 0.15f;
+            UtilityTree.skills[1] = "P";
+            UtilityTree.skillButtons[1].interactable = false;
+
+            UtilityTree.skills[4] = "U";
+            UtilityTree.skillButtons[4].interactable = true;
+            if (UtilityTree.skills[2] == "P")
+            {
+                UtilityTree.skills[3] = "U";
+                UtilityTree.skillButtons[3].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util2R" && UtilityTree.skills[2] != "P")
+        {
+            Stats.BonusRLSpeed = 0.2f;
+            UtilityTree.skills[2] = "P";
+            UtilityTree.skillButtons[2].interactable = false;
+
+            UtilityTree.skills[5] = "U";
+            UtilityTree.skillButtons[5].interactable = true;
+            if (UtilityTree.skills[1] == "P")
+            {
+                UtilityTree.skills[3] = "U";
+                UtilityTree.skillButtons[3].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util3" && UtilityTree.skills[3] != "P")
+        {
+            Stats.EmptyReloadDMG = 0.33f;
+            UtilityTree.skills[3] = "P";
+            UtilityTree.skillButtons[3].interactable = false;
+            if (UtilityTree.skills[4] != "P")
+            {
+                UtilityTree.skills[4] = "U";
+                UtilityTree.skillButtons[4].interactable = true;
+            }           
+            if (UtilityTree.skills[5] != "P")
+            {
+                UtilityTree.skills[5] = "U";
+                UtilityTree.skillButtons[5].interactable = true;
+            }
+            Debug.Log("Empty Reload DMG = " + Stats.EmptyReloadDMG);
+        }
+        if (selectedSkill == "Util4L" && UtilityTree.skills[4] != "P")
+        {
+            Stats.SlowNearPlayer = 0.20f;
+            Stats.CompanionBuff += 0.1f;
+            UtilityTree.skills[4] = "P";
+            UtilityTree.skillButtons[4].interactable = false;
+
+            UtilityTree.skills[7] = "U";
+            UtilityTree.skillButtons[7].interactable = true;
+            if (UtilityTree.skills[5] == "P")
+            {
+                UtilityTree.skills[6] = "U";
+                UtilityTree.skillButtons[6].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util4R" && UtilityTree.skills[5] != "P")
+        {
+            Stats.BonusAoeDMG += 0.1f;
+            UtilityTree.skills[5] = "P";
+            UtilityTree.skillButtons[5].interactable = false;
+
+            UtilityTree.skills[8] = "U";
+            UtilityTree.skillButtons[8].interactable = true;
+            if (UtilityTree.skills[4] == "P")
+            {
+                UtilityTree.skills[6] = "U";
+                UtilityTree.skillButtons[6].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util5" && UtilityTree.skills[6] != "P")
+        {
+            Stats.FreeReloadChance = 0.1f;
+            UtilityTree.skills[6] = "P";
+            UtilityTree.skillButtons[6].interactable = false;
+            if (UtilityTree.skills[7] != "P")
+            {
+                UtilityTree.skills[7] = "U";
+                UtilityTree.skillButtons[7].interactable = true;
+            }   
+            if (UtilityTree.skills[8] != "P")
+            {
+                UtilityTree.skills[8] = "U";
+                UtilityTree.skillButtons[8].interactable = true;
+            }
+            if (UtilityTree.skills[7] == "P" && UtilityTree.skills[8] == "P")
+            {
+                UtilityTree.skills[9] = "U";
+                UtilityTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util6L" && UtilityTree.skills[7] != "P")
+        {
+            Stats.BonusMoveSpeed = 0.35f;
+            UtilityTree.skills[7] = "P";
+            UtilityTree.skillButtons[7].interactable = false;
+            if (UtilityTree.skills[8] == "P" && UtilityTree.skills[6] == "P")
+            {
+                UtilityTree.skills[9] = "U";
+                UtilityTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util6R" && UtilityTree.skills[8] != "P")
+        {
+            Stats.BonusAbilityCDR += 0.15f;
+            Stats.BonusKillRewards += 0.10f;
+            UtilityTree.skills[8] = "P";
+            UtilityTree.skillButtons[8].interactable = false;
+            if (UtilityTree.skills[7] == "P" && UtilityTree.skills[6] == "P")
+            {
+                UtilityTree.skills[9] = "U";
+                UtilityTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util7" && UtilityTree.skills[9] != "P")
+        {
+            UtilityTree.skills[9] = "P";
+            UtilityTree.skillButtons[9].interactable = false;
+        }
+        // Tank Tree
+        if (selectedSkill == "Tank1" && TankTree.skills[0] != "P")
+        {
+            Stats.BonusHp = 50f;
+            TankTree.skills[0] = "P";
+            TankTree.skillButtons[0].interactable = false;
+
+            TankTree.skills[1] = "U";
+            TankTree.skills[2] = "U";
+            TankTree.skillButtons[1].interactable = true;
+            TankTree.skillButtons[2].interactable = true;
+            Debug.Log("Bonus Reload Speed = " + Stats.BonusHp);
+        }
+        if (selectedSkill == "Tank2L" && TankTree.skills[1] != "P")
+        {
+            Stats.BonusHp = 0.15f;
+            TankTree.skills[1] = "P";
+            TankTree.skillButtons[1].interactable = false;
+
+            TankTree.skills[4] = "U";
+            TankTree.skillButtons[4].interactable = true;
+            if (TankTree.skills[2] == "P")
+            {
+                TankTree.skills[3] = "U";
+                TankTree.skillButtons[3].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank2R" && TankTree.skills[2] != "P")
+        {
+            Stats.BonusRLSpeed = 0.2f;
+            TankTree.skills[2] = "P";
+            TankTree.skillButtons[2].interactable = false;
+
+            TankTree.skills[5] = "U";
+            TankTree.skillButtons[5].interactable = true;
+            if (TankTree.skills[1] == "P")
+            {
+                TankTree.skills[3] = "U";
+                TankTree.skillButtons[3].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank3" && TankTree.skills[3] != "P")
+        {
+            Stats.EmptyReloadDMG = 0.33f;
+            TankTree.skills[3] = "P";
+            TankTree.skillButtons[3].interactable = false;
+            if (TankTree.skills[4] != "P")
+            {
+                TankTree.skills[4] = "U";
+                TankTree.skillButtons[4].interactable = true;
+            }
+            if (TankTree.skills[5] != "P")
+            {
+                TankTree.skills[5] = "U";
+                TankTree.skillButtons[5].interactable = true;
+            }
+            Debug.Log("Empty Reload DMG = " + Stats.EmptyReloadDMG);
+        }
+        if (selectedSkill == "Tank4L" && TankTree.skills[4] != "P")
+        {
+            Stats.SlowNearPlayer = 0.20f;
+            Stats.CompanionBuff += 0.1f;
+            TankTree.skills[4] = "P";
+            TankTree.skillButtons[4].interactable = false;
+
+            TankTree.skills[7] = "U";
+            TankTree.skillButtons[7].interactable = true;
+            if (TankTree.skills[5] == "P")
+            {
+                TankTree.skills[6] = "U";
+                TankTree.skillButtons[6].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank4R" && TankTree.skills[5] != "P")
+        {
+            Stats.BonusAoeDMG += 0.1f;
+            TankTree.skills[5] = "P";
+            TankTree.skillButtons[5].interactable = false;
+
+            TankTree.skills[8] = "U";
+            TankTree.skillButtons[8].interactable = true;
+            if (TankTree.skills[4] == "P")
+            {
+                TankTree.skills[6] = "U";
+                TankTree.skillButtons[6].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank5" && TankTree.skills[6] != "P")
+        {
+            Stats.FreeReloadChance = 0.1f;
+            TankTree.skills[6] = "P";
+            TankTree.skillButtons[6].interactable = false;
+            if (TankTree.skills[7] != "P")
+            {
+                TankTree.skills[7] = "U";
+                TankTree.skillButtons[7].interactable = true;
+            }
+            if (TankTree.skills[8] != "P")
+            {
+                TankTree.skills[8] = "U";
+                TankTree.skillButtons[8].interactable = true;
+            }
+            if (TankTree.skills[7] == "P" && TankTree.skills[8] == "P")
+            {
+                TankTree.skills[9] = "U";
+                TankTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank6L" && TankTree.skills[7] != "P")
+        {
+            Stats.BonusMoveSpeed = 0.35f;
+            TankTree.skills[7] = "P";
+            TankTree.skillButtons[7].interactable = false;
+            if (TankTree.skills[8] == "P" && TankTree.skills[6] == "P")
+            {
+                TankTree.skills[9] = "U";
+                TankTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank6R" && TankTree.skills[8] != "P")
+        {
+            Stats.BonusAbilityCDR += 0.15f;
+            Stats.BonusKillRewards += 0.10f;
+            TankTree.skills[8] = "P";
+            TankTree.skillButtons[8].interactable = false;
+            if (TankTree.skills[7] == "P" && TankTree.skills[6] == "P")
+            {
+                TankTree.skills[9] = "U";
+                TankTree.skillButtons[9].interactable = true;
+            }
+        }
+        if (selectedSkill == "Tank7" && TankTree.skills[9] != "P")
+        {
+            TankTree.skills[9] = "P";
+            TankTree.skillButtons[9].interactable = false;
+        }
+        ExitUpgradePanel();
+    }
+
+    public void Choice2()
+    {
+        if(selectedSkill == "DPS3" && DPSTree.skills[3] != "P")
+        {
+            Stats.ShotAfterCritChance = 0.35f;
+            DPSTree.skills[3] = "P";
+            DPSTree.skillButtons[3].interactable = false;
+            if (DPSTree.skills[4] != "P")
+            {
+                DPSTree.skills[4] = "U";
+                DPSTree.skillButtons[4].interactable = true;
+            }
+            if (DPSTree.skills[5] != "P")
+            {
+                DPSTree.skills[5] = "U";
+                DPSTree.skillButtons[5].interactable = true;
+            }          
+        }
+        if (selectedSkill == "DPS5" && DPSTree.skills[6] != "P")
+        {
+            Stats.BonusDmgUnder25P = 1.0f;
+            DPSTree.skills[6] = "P";
+            DPSTree.skillButtons[6].interactable = false;
+            if (DPSTree.skills[7] != "P")
+            {
+                DPSTree.skills[7] = "U";
+                DPSTree.skillButtons[7].interactable = true;
+            }     
+            if (DPSTree.skills[8] != "P")
+            {
+                DPSTree.skills[8] = "U";
+                DPSTree.skillButtons[8].interactable = true;
+            }  
+        }
+        if (selectedSkill == "Util3" && UtilityTree.skills[3] != "P")
+        {
+            Stats.EmptyReloadMS = 0.18f;
+            UtilityTree.skills[3] = "P";
+            UtilityTree.skillButtons[3].interactable = false;
+            if (UtilityTree.skills[4] != "P")
+            {
+                UtilityTree.skills[4] = "U";
+                UtilityTree.skillButtons[4].interactable = true;
+            }
+            if (UtilityTree.skills[5] != "P")
+            {
+                UtilityTree.skills[5] = "U";
+                UtilityTree.skillButtons[5].interactable = true;
+            }
+        }
+        if (selectedSkill == "Util5" && UtilityTree.skills[6] != "P")
+        {
+            Stats.EmptyReloadInvis = 2.5f;
+            UtilityTree.skills[6] = "P";
+            UtilityTree.skillButtons[6].interactable = false;
+            if (UtilityTree.skills[7] != "P")
+            {
+                UtilityTree.skills[7] = "U";
+                UtilityTree.skillButtons[7].interactable = true;
+            }   
+            if (UtilityTree.skills[8] != "P")
+            {
+                UtilityTree.skills[8] = "U";
+                UtilityTree.skillButtons[8].interactable = true;
+            }           
+        }
+        choice2.gameObject.SetActive(false);
+        ExitUpgradePanel();
+    }
+
+    public void Skills()
+    {
+        //BOOK VERSION
+        SkillBook.SetActive(true);
+        curPage = 0;
+        skillButs[0].GetComponentInChildren<Text>().text = Stats.dpsSkills[curPage];
+        skillButs[1].GetComponentInChildren<Text>().text = Stats.tankSkills[curPage];
+        skillButs[2].GetComponentInChildren<Text>().text = Stats.utilSkills[curPage];
+        RefreshUpgrades();
+        //PANEL VERSION 
+        /*
+        anim.SetTrigger("Skills");
+        skillTreesContainer.GetComponent<AudioSource>().Play();
+        GameObject.Find("DPS Tree").GetComponent<RectTransform>().SetParent(frontLayer.transform, false);
+        GameObject.Find("Utility Tree").GetComponent<RectTransform>().SetParent(backLayer.transform, false);
+        GameObject.Find("Tank Tree").GetComponent<RectTransform>().SetParent(midLayer.transform, false);
+        for(int i = 0; i < 10; i++)
+        {
+            if(DPSTree.skills[i] == "U")
+            {
+                DPSTree.skillButtons[i].interactable = true;
+            }
+            else
+            {
+                DPSTree.skillButtons[i].interactable = false;
+            }
+            UtilityTree.skillButtons[i].interactable = false;
+            TankTree.skillButtons[i].interactable = false;
+        }
+        */
+    }
+
+    public void SwitchToTankTree()
+    {
+        upgradePanel.GetComponent<Image>().sprite = Resources.Load<Sprite>("upgradePanel2");
+        anim.SetTrigger("ToTank");
+        skillTreesContainer.GetComponent<AudioSource>().Play();
+        if (TankTree.skills[0] != "P")
+        {
+            TankTree.skillButtons[0].interactable = true;
+        }
+        GameObject.Find("DPS Tree").GetComponent<RectTransform>().SetParent(midLayer.transform, false);
+        GameObject.Find("Utility Tree").GetComponent<RectTransform>().SetParent(backLayer.transform, false);
+        GameObject.Find("Tank Tree").GetComponent<RectTransform>().SetParent(frontLayer.transform, false);
+        menu.SetActive(false);
+        for (int i = 0; i < 10; i++)
+        {
+            if (TankTree.skills[i] == "U")
+            {
+                TankTree.skillButtons[i].interactable = true;
+            }
+            else
+            {
+                TankTree.skillButtons[i].interactable = false;
+            }
+            UtilityTree.skillButtons[i].interactable = false;
+            DPSTree.skillButtons[i].interactable = false;
+        }
+    }
+
+    public void SwitchToDPSTree()
+    {
+        upgradePanel.GetComponent<Image>().sprite = Resources.Load<Sprite>("upgradePanel");
+        anim.SetTrigger("ToDPS");
+        skillTreesContainer.GetComponent<AudioSource>().Play();
+        if (DPSTree.skills[0] != "P")
+        {
+            DPSTree.skillButtons[0].interactable = true;
+        }
+        GameObject.Find("DPS Tree").GetComponent<RectTransform>().SetParent(frontLayer.transform, false);
+        GameObject.Find("Utility Tree").GetComponent<RectTransform>().SetParent(midLayer.transform, false);
+        GameObject.Find("Tank Tree").GetComponent<RectTransform>().SetParent(backLayer.transform, false);
+        menu.SetActive(false);
+        for (int i = 0; i < 10; i++)
+        {
+            if (DPSTree.skills[i] == "U")
+            {
+                DPSTree.skillButtons[i].interactable = true;
+            }
+            else
+            {
+                DPSTree.skillButtons[i].interactable = false;
+            }
+            UtilityTree.skillButtons[i].interactable = false;
+            TankTree.skillButtons[i].interactable = false;
+        }
+    }
+
+    public void SwitchToUtilityTree()
+    {
+        upgradePanel.GetComponent<Image>().sprite = Resources.Load<Sprite>("upgradePanel3");
+        anim.SetTrigger("ToUtility");
+        skillTreesContainer.GetComponent<AudioSource>().Play();
+        if (UtilityTree.skills[0] != "P")
+        {
+            UtilityTree.skillButtons[0].interactable = true;
+        }
+        GameObject.Find("DPS Tree").GetComponent<RectTransform>().SetParent(midLayer.transform, false);
+        GameObject.Find("Utility Tree").GetComponent<RectTransform>().SetParent(frontLayer.transform, false);
+        GameObject.Find("Tank Tree").GetComponent<RectTransform>().SetParent(backLayer.transform, false);
+        menu.SetActive(false);
+        for (int i = 0; i < 10; i++)
+        {
+            if (UtilityTree.skills[i] == "U")
+            {
+                UtilityTree.skillButtons[i].interactable = true;
+            }
+            else
+            {
+                UtilityTree.skillButtons[i].interactable = false;
+            }
+            DPSTree.skillButtons[i].interactable = false;
+            TankTree.skillButtons[i].interactable = false;
+        }
+    }
+
+    public void ReturnFromSkills()
+    {
+        SkillBook.SetActive(false);
+        /*
+        anim.SetTrigger("ReturnFromSkills");
+        skillTreesContainer.GetComponent<AudioSource>().Play();
+        GameObject.Find("Utility Tree").GetComponent<RectTransform>().SetParent(skillTreesContainer.transform, false);
+        GameObject.Find("Tank Tree").GetComponent<RectTransform>().SetParent(skillTreesContainer.transform, false);
+        GameObject.Find("DPS Tree").GetComponent<RectTransform>().SetParent(skillTreesContainer.transform, false);
+        menu.SetActive(true);
+        */
+    }
